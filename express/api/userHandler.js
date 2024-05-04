@@ -34,7 +34,11 @@ router.post('/login', (req, res) => {
         } else {
             const user = result[0];
             if(user.user_password === user_password) {
-                res.json({ success: true, message: "登入成功"})
+                const user_object = {
+                    user_name: user.user_name,
+                    user_email: user.user_email
+                }
+                res.json({ success: true, message: "登入成功", user: user_object})
             } else {
                 res.status(401).json({ success: false, message: "密碼錯誤"});
             }

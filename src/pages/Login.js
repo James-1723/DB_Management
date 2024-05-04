@@ -1,10 +1,12 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { useUser } from '../context/UserContext.js'
 
 const Login = () => {
 
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
+    const { user, setUser} = useUser();
 
     const navigate = useNavigate()
 
@@ -26,6 +28,8 @@ const Login = () => {
         const data = await response.json();
         if(data.success) { 
             console.log("登入成功");
+            localStorage.setItem("user", JSON.stringify(data.user));
+            setUser(data.user);
             navigate('/');
         }
         else { console.error("登入失敗", data.message) }
