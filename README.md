@@ -21,13 +21,6 @@ CREATE DATABASE recippy;
 SOURCE users.sql
 exit;
 
-***後端伺服器開啟***
-
-完成了之後再cd到express檔案夾
-% cd ~/Desktop/DB_Management/express
-% node app.js
-後端就開始run了
-
 ***前端框架開啟***
 
 前端的話是先cd到專案
@@ -38,3 +31,14 @@ exit;
 
 然後開啟前端框架
 % npm run start
+
+
+***後端伺服器開啟***
+
+完成了之後再cd到express檔案夾
+% cd ~/Desktop/DB_Management/express
+% npm install
+% node app.js
+後端就開始run了
+
+
