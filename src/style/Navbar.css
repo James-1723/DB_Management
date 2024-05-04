@@ -1,0 +1,39 @@
+.navbar a:hover {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #7CC6FE;
+    border-radius: 10px;
+}
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar .home-link a {
+  color: #FFB140;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar .home-link a:hover {
+    color: #ffffff;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color: #000;
+}
+
+.search-bar {
+  margin: auto;
+}
