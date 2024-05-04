@@ -1,9 +1,7 @@
 ***資料庫設定***
 
-第一次run專案的時候，請到express -> .env內，把DB_USER, DB_PASSWORD, DB_DATABASE改成自己本機的資料
-
-
-內的user, password 改成自己MySQL的使用者名稱和密碼。
+第一次run專案的時候，請到express -> .env.example，將這個檔案複製一份，並改名為.env
+再到.env內，把DB_USER, DB_PASSWORD, DB_DATABASE改成自己本機的資料。
 
 database的部分，可以把'recippy'改成自己本地已經建立的資料庫名稱，只要確定這個資料庫是空的就好。
 

@@ -13,12 +13,8 @@ const connection = mysql.createConnection({
 
 connection.connect(error => {
     if (error) {
-        console.log(process.env.DB_HOST);
         throw error;
     }
-    console.log(process.env.DB_HOST);
-    console.log(process.env.DB_USER);
-    console.log(process.env.DB_PASSWORD)
     console.log("Successfully connected to the database.");
 });
 
