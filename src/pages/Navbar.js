@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useUser } from '../context/UserContext.js'
 import '../style/Navbar.css';
 const Navbar = () => {
+
+    const { user } = useUser();
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -18,7 +21,11 @@ const Navbar = () => {
             <div className="links">
                 <Link to='/'>Filter</Link>
                 <Link to='/'>Create</Link>
-                <Link to='/login'>Login</Link>
+                {
+                    user
+                    ? <Link to='/user'>Personal</Link>
+                    : <Link to='/login'>Log In</Link>
+                }
             </div>
         </nav>        
     );

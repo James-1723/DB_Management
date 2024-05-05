@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { useUser } from '../context/UserContext.js'
 
 const Login = () => {
@@ -53,6 +53,11 @@ const Login = () => {
                 required
             ></input>
             <button onClick={submitLoginInput}>Login</button>
+            <br />
+            <span>
+                Not having an account yet?
+                <Link to="../sign-up">Sign up</Link>
+            </span>
         </div>
     );
 }
