@@ -2,13 +2,20 @@ import { useState } from 'react';
 import { useUser } from '../context/UserContext.js';
 
 const User = () => {
-    const {user , setUser} = useUser();
-    return (
+    const {user} = useUser();
+    const displayName = user && user.user_name ? user.user_name : '';
+
+    if (!user) {
+        return <div>Loading...</div>; // 或其他臨時顯示
+    }
+
+    return ( 
         <div>
-            <h2>Hello, {user.user_name} !</h2>
-            <p>This is your personal page</p>
+            <p>This is title page</p>
+            <p className={displayName ? '' : 'hide'}>Hello, {displayName}</p>
         </div>
     );
 }
+
  
 export default User;
