@@ -14,7 +14,12 @@ const Home = () => {
         <div>
             <h2>{user ? user.user_name: ''}</h2>
             <div className="post">
-                <p className="poster-name">{name}</p>
+                <div className='poster-info'>
+                    <div className='poster-pic' style={{backgroundColor: 'orange', color: 'white'}}>
+                        {name.charAt(0).toUpperCase()}
+                    </div>
+                    <p className="poster-name">{name}</p>
+                </div>
                 <h3 className='post-title'>{title}</h3>
                 {tags.map((tag, index) => {
                     return <span className='tag' key={index}>{tag}</span>
