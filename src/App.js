@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import User from './pages/User.js';
+import Create from './pages/Create.js';
 
 import './App.js';
 
@@ -23,6 +24,7 @@ function App() {
                   <Route path='/login' element={<Login />} />
                   <Route path='/sign-up' element={<Signup />} />
                   <Route path='/user' element={<User />} />
+                  <Route path='/create' element={<Create />} />
                 </Routes>
               </div>
           </UserProvider>

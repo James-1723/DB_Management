@@ -20,7 +20,7 @@ const Navbar = () => {
             </form>
             <div className="links">
                 <Link to='/'>Filter</Link>
-                <Link to='/'>Create</Link>
+                <Link to='/create'>Create</Link>
                 {
                     user
                     ? <Link to='/user'>Personal</Link>

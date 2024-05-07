@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext.js';
+import { useNavigate } from 'react-router-dom';
 
 const User = () => {
-    const {user} = useUser();
+    const {user, setUser} = useUser();
     const displayName = user && user.user_name ? user.user_name : '';
+    const navigate = useNavigate();
 
-    if (!user) {
-        return <div>Loading...</div>; // 或其他臨時顯示
+    const logout = () => {
+        setUser(null)
+        localStorage.removeItem('user');
+        navigate('/')
+        console.log('登出成功')
     }
 
     return ( 
         <div>
             <p>This is title page</p>
             <p className={displayName ? '' : 'hide'}>Hello, {displayName}</p>
+            <button onClick={logout}>Log out</button>
         </div>
     );
 }
