@@ -43,7 +43,7 @@ const Create = () => {
         e.preventDefault();
         const post = { title, content, selectedTags };
 
-        const response = await fetch('http://localhost:8000/api/posts', {
+        const response = await fetch('http://localhost:8000/api/post', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(post)
@@ -69,11 +69,17 @@ const Create = () => {
                 required
             ></input>
             <p>標籤</p>
-            <input
-                type="text"
-                required
-            ></input>
-            <button>建立</button>
+            <Select
+                value={selectedTags}
+                onChange={handleChange}
+                onInputChange={handleInputChange}
+                options={options}
+                isClearable
+                isSearchable
+                isMulti
+                placeholder="Enter or select tags"
+            />
+            <button onClick={createPost}>建立</button>
         </div>
     );
 }
