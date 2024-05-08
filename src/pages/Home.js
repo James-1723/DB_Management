@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext.js'
 import '../style/Post.css';
+
 const Home = () => {
 
     const [name, setName] = useState('lemonade');

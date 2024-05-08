@@ -1,4 +1,4 @@
-.login-container {
+.sign-up-container {
     background: rgb(245, 245, 245);
     padding: 20px;
     border-radius: 10px;
@@ -6,7 +6,7 @@
     width: 300px;
 }
 
-.login-form {
+.sign-up-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@
 
 input[type="text"],
 input[type="password"],
-.login-button {
+.sign-up-button {
     width: calc(100% - 20px);
     padding: 10px;
     margin-top: 150x;
@@ -35,7 +35,7 @@ input[type="password"]:focus {
     box-shadow: 0 0 8px #ccc;
 }
 
-.login-button  {
+.sign-up-button  {
     width: 100%;
     background-color: orange;
     color: white;
@@ -43,6 +43,6 @@ input[type="password"]:focus {
     cursor: pointer;
 }
 
-.login-button:hover {
+.sign-up-button:hover {
     box-shadow: 0 0 8px #ccc;
 }
