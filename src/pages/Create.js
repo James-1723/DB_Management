@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useUser } from '../context/UserContext.js'
+import '../style/Create.css';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
@@ -67,17 +69,11 @@ const Create = () => {
                 required
             ></input>
             <p>標籤</p>
-            <Select
-                value={selectedTags}
-                onChange={handleChange}
-                onInputChange={handleInputChange}
-                options={options}
-                isClearable
-                isSearchable
-                isMulti
-                placeholder="Enter or select tags"
-            />
-            <button onClick={createPost}>建立</button>
+            <input
+                type="text"
+                required
+            ></input>
+            <button>建立</button>
         </div>
     );
 }

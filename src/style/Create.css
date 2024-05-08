@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300&display=swap');
+
+.create-button {
+    width: calc(100% - 30%);
+    height: 30px;
+    background-color: orange;
+    color: white;
+    margin-top: 15px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3 ease-in-out;
+}
+
+.create-button:hover {
+    box-shadow: 0 0 8px #ccc;
+}

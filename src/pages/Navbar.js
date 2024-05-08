@@ -12,19 +12,19 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <div className='home-link'>
-                <Link to='/'>Home</Link>
+                <Link to='/'>首頁</Link>
             </div>
             <form className='search-bar' onSubmit={handleSearch}>
-                <input type="text" placeholder="Search..."/>
-                <button>Search</button>
+                <input type="text" placeholder="輸入文字..."/>
+                <button>搜尋</button>
             </form>
             <div className="links">
-                <Link to='/'>Filter</Link>
-                <Link to='/create'>Create</Link>
+                <Link to='/'>篩選</Link>
+                <Link to='/create'>建立</Link>
                 {
                     user
                     ? <Link to='/user'>Personal</Link>
-                    : <Link to='/login'>Log In</Link>
+                    : <Link to='/login'>登入</Link>
                 }
             </div>
         </nav>        

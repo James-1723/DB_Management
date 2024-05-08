@@ -40,9 +40,9 @@ const Login = () => {
         
         <div className="login-container">
             <form className='login-form'>
-                <h2>Login</h2>
+                <h2>登入</h2>
                 <div className='input-container'>
-                    <p>Your Email</p>
+                    <p>電子郵件</p>
                         <input
                             type='text'
                             id='user-email'
@@ -51,7 +51,7 @@ const Login = () => {
                             required
                         ></input>
                     
-                    <p>Password</p>
+                    <p>密碼</p>
                     <input
                         type='password'
                         id='user-password'
@@ -60,7 +60,7 @@ const Login = () => {
                         required
                     ></input>
                 </div>
-                <button className='login-button' onClick={submitLoginInput}>Login</button>
+                <button className='login-button' onClick={submitLoginInput}>登入</button>
             </form>
         </div>
     );
