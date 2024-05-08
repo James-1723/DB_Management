@@ -4,6 +4,7 @@ import Select from 'react-select';
 
 const Create = () => {
 
+    const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
@@ -40,13 +41,14 @@ const Create = () => {
         e.preventDefault();
         const post = { title, content, selectedTags };
 
-        const response = await fetch('http://localhost:8000/posts', {
+        const response = await fetch('http://localhost:8000/api/posts', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(post)
         });
 
         if (response.ok) {
+            navigate('/');
             console.log('post created');
         }
     }
