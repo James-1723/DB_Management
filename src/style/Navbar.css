@@ -44,4 +44,5 @@
 
 .search-bar {
   margin: auto;
+  display: flex;
 }
