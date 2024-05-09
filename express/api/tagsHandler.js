@@ -5,6 +5,7 @@ const router = Router();
 
 router.get('/tags', (req, res) => {
 
+    //把這裡改成從資料庫讀取標籤資料
     const tags = [
         { tag_id: 1, tag_name: 'tag1' },
         { tag_id: 2, tag_name: 'tag2' },
