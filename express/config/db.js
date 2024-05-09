@@ -17,7 +17,6 @@ connection.connect(error => {
         return;
     }
     console.log("Successfully connected to the database.");
-    console.log(process.cwd());
     const sqlScript = fs.readFileSync('../database/users.sql', {encoding: 'utf-8'});
     connection.query(sqlScript, (err, results) => {
         if(err) {

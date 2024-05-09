@@ -62,6 +62,8 @@ const Login = () => {
                 </div>
                 <button className='login-button' onClick={submitLoginInput}>登入</button>
             </form>
+
+            <Link to='/sign-up'>註冊</Link>
         </div>
     );
 }
