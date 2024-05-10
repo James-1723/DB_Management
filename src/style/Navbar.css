@@ -27,6 +27,12 @@
 
 .navbar .links {
   margin-left: auto;
+  display: flex;
+  /*justify-content: flex-start; /*讓連結從左側開始水平排列*/
+}
+
+.filter-link :hover {
+  color: #ffffff;
 }
 
 .navbar a {
@@ -38,4 +44,5 @@
 
 .search-bar {
   margin: auto;
+  display: flex;
 }
