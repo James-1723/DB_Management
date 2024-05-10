@@ -1,0 +1,19 @@
+echo "安裝後端依賴"
+cd express
+npm install
+
+echo "安裝前端依賴"
+cd ..
+npm install
+
+if [ ! -f .env ]; then
+    echo "設定環境變數"
+    cp .env.example .env
+else 
+    echo ".env 檔案已存在"
+fi
+
+echo "安裝完成"
+echo "請執行 bin/dev"
+
+

@@ -32,7 +32,7 @@ const Navbar = () => {
                 </div>
                 {
                     user
-                    ? <Link to='/user'>Personal</Link>
+                    ? <Link to='/user'>個人介面</Link>
                     : <Link to='/login'>登入</Link>
                 }
             </div>
