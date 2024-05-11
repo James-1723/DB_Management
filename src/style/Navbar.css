@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300&display=swap');
 
 .navbar a:hover {
-    color: #ffffff;
+    color: black;
     font-weight: bold;
-    background-color: orange;
+    background-color: white;
     border-radius: 10px;
 }
 
@@ -11,18 +11,23 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
+  /* max-width: 800px; */
+  width: 1400px;
+  /* margin: 0 auto; */
   border-bottom: 1px solid #f2f2f2;
+  background-color: #FFB140;
+}
+.navbar .home-link{
+  left: 800px;
 }
 .navbar .home-link a {
-  color: #FFB140;
+  color: #040404;
   font-size: 20px;
   font-weight: bold;
 }
 
 .navbar .home-link a:hover {
-    color: #ffffff;
+    color: black;
 }
 
 .navbar .links {
@@ -43,6 +48,16 @@
 }
 
 .search-bar {
+  position: relative;
+  width: 400px;
   margin: auto;
-  display: flex;
+  display: inline-flex;
+  left: 200px;
+}
+
+.search_icon{
+  margin: 10px;
+}
+.search_icon:hover {
+  cursor: pointer; /* 鼠標變成手指狀態 */
 }

@@ -3,6 +3,9 @@ import { useUser } from '../context/UserContext.js'
 import '../style/Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import {faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import{faUser } from '@fortawesome/free-solid-svg-icons';
+import{faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
 
@@ -15,20 +18,25 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <div className='home-link'>
-                <Link to='/'>首頁</Link>
+                <Link to='/'>HomePage</Link>
             </div>
             <form className='search-bar' onSubmit={handleSearch}>
-                <input type="text" placeholder="輸入文字..."/>
-                <button>搜尋</button>
+                <input type="text" placeholder="請輸入菜名"></input>
+                <div className='search_icon'>< FontAwesomeIcon icon={faMagnifyingGlass} /></div>
             </form>
             <div className='links'>
                 <div className='filter-link'>
                     <Link to='/'>
-                        <FontAwesomeIcon icon={faFilter}/> 篩選
+                        <FontAwesomeIcon icon={faFilter}/> 篩選 
                     </Link>
                 </div>
                 <div className='create-link'>
-                    <Link to='/create'>建立</Link>
+                    <Link to='/create'>
+                        <FontAwesomeIcon icon={faSquarePlus} /> 建立
+                    </Link>
+                </div>
+                <div className='create-link'>
+                    <Link to='/login'><FontAwesomeIcon icon={faUser} /> 登入</Link>
                 </div>
                 {
                     user
