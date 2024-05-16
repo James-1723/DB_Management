@@ -12,14 +12,16 @@
   display: flex;
   align-items: center;
   /* max-width: 800px; */
-  width: 1400px;
-  /* margin: 0 auto; */
+  width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   background-color: #FFB140;
 }
+
 .navbar .home-link{
   left: 800px;
 }
+
 .navbar .home-link a {
   color: #040404;
   font-size: 20px;
