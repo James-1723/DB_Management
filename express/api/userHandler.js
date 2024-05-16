@@ -6,7 +6,7 @@ const router = Router();
 router.post('/register', (req, res) => {
     // 註冊用戶的邏輯
     const { user_name, user_email, user_password } = req.body;
-    const query = 'INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO user (user_name, user_email, user_password) VALUES (?, ?, ?)';
     db.query(query, [user_name, user_email, user_password], (err, result) => {
         if(err) {
             console.error(err);
@@ -21,7 +21,7 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     // 登入用戶的邏輯
     const { user_email, user_password } = req.body;
-    const query = `SELECT * FROM users WHERE user_email = ?`
+    const query = `SELECT * FROM user WHERE user_email = ?`
     db.query(query, [user_email], (err, result) => {
         if(err) {
             console.error(err);
