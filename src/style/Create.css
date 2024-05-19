@@ -20,11 +20,8 @@
     margin-bottom: 30px;
 }
 
-input[type="text"],
-.create-button {
+input[type="text"] {
     width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 15px;
     margin-bottom: 15px;
     border-radius: 20px;
     border: 1px solid #ccc;
@@ -37,10 +34,15 @@ input[type="text"],
 }
 
 .create-button {
-    width: 100%;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: box-shadow 0.3 ease-in-out;
     background-color: orange;
     color: white;
-    border: none;
     cursor: pointer;
 }
 
