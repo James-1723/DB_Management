@@ -1,20 +1,11 @@
 CREATE TABLE IF NOT EXISTS  `post` (
-  `post_ID` int NOT NULL AUTO_INCREMENT,
+  `post_id` int NOT NULL AUTO_INCREMENT,
   `text` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
   `like_tag` int DEFAULT NULL,
   `comment_tag` int DEFAULT NULL,
-  `image_ID` int DEFAULT NULL,
-  `type_ID` int NOT NULL,
-  `ingre_ID` int NOT NULL,
-  `cooker_ID` int NOT NULL,
-  PRIMARY KEY (`post_ID`),
-  KEY `cooker_ID_idx` (`cooker_ID`),
-  KEY `ingre_ID_idx` (`ingre_ID`),
-  KEY `type_ID_idx` (`type_ID`),
-  KEY `image_ID_idx` (`image_ID`),
-  CONSTRAINT `cooker_ID` FOREIGN KEY (`cooker_ID`) REFERENCES `cooker` (`cooker_ID`),
-  CONSTRAINT `image_ID` FOREIGN KEY (`image_ID`) REFERENCES `image` (`image_ID`),
-  CONSTRAINT `ingre_ID` FOREIGN KEY (`ingre_ID`) REFERENCES `ingredient` (`ingre_ID`),
-  CONSTRAINT `type_ID` FOREIGN KEY (`type_ID`) REFERENCES `type` (`type_ID`)
+  `image_id` int DEFAULT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `image_ID_idx` (`image_id`),
+  CONSTRAINT `image_ID` FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`)
 ) 
