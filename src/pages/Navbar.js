@@ -35,14 +35,14 @@ const Navbar = () => {
                         <FontAwesomeIcon icon={faSquarePlus} /> 建立
                     </Link>
                 </div>
-                <div className='create-link'>
-                    <Link to='/login'><FontAwesomeIcon icon={faUser} /> 登入</Link>
-                </div>
+                <div>
                 {
                     user
                     ? <Link to='/user'>個人介面</Link>
-                    : <Link to='/login'>登入</Link>
+                    : <Link to='/login'><FontAwesomeIcon icon={faUser} /> 登入</Link>
+
                 }
+                </div>
             </div>
         </nav>        
     );
