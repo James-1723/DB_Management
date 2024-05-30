@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS  `post` (
+CREATE TABLE IF NOT EXISTS  `tag` (
     `post_id` int NOT NULL,
   `tag_name` varchar(255) NOT NULL,
   `tag_type` enum('ingredient','cooker','type') NOT NULL,
