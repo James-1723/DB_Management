@@ -13,9 +13,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   PRIMARY KEY (`image_id`)
 );
 
-
 CREATE TABLE IF NOT EXISTS  `post` (
-  `title` varchar(200),
   `post_id` int NOT NULL AUTO_INCREMENT,
   `text` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
@@ -45,13 +43,11 @@ CREATE TABLE IF NOT EXISTS `manager` (
   PRIMARY KEY (`manager_id`)
 );
 
-
 CREATE TABLE IF NOT EXISTS  `tag` (
-  `post_id` int NOT NULL,
+  `tag_id` int NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(255) NOT NULL,
   `tag_type` enum('ingredient','cooker','type') NOT NULL,
-  PRIMARY KEY (`post_id`,`tag_name`),
-  CONSTRAINT `tag_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
+  PRIMARY KEY (`tag_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `interaction` (
@@ -81,3 +77,11 @@ CREATE TABLE IF NOT EXISTS `report` (
   CONSTRAINT `po_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
   CONSTRAINT `user_user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 );
+
+CREATE TABLE IF NOT EXISTS  `post_tag` (
+    `post_id` int NOT NULL,
+    `tag_id` int NOT NULL,
+    PRIMARY KEY (`post_id`,`tag_id`),
+    CONSTRAINT `post_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
+    CONSTRAINT `tag_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
+)
