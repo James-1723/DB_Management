@@ -1,5 +1,4 @@
 CREATE TABLE IF NOT EXISTS  `post` (
-  `title` varchar(200) NOT NULL,
   `post_id` int NOT NULL AUTO_INCREMENT,
   `text` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
