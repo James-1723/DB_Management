@@ -7,29 +7,31 @@ h2 {
     margin-bottom: 30px;
 }
 
-/*.post {
-    padding: 10px;
-    border-bottom: 1px solid #f2f2f2;
-    height: 200px;
-    width: 900px;
+.post {
+    position: relative;
     padding: 30px;
-    border-radius: 4%;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    width: 840px;
+    border-radius: 20px;
     margin-bottom: 30px;
-}*/
+}
 
-.post-inside{
+/*.post-inside{
     justify-content: center;
     align-items: center;
     position: relative;
     border-bottom: 1px solid #f2f2f2;
-    background-color: rgb(245, 245, 245);
+    color: rgb(245, 245, 245);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
     height: 100px;
     width: 840px;
     padding: 30px;
     border-radius: 20px;
     margin-bottom: 30px;
-}
+}*/
 
 .poster-info {
     display: flex;
