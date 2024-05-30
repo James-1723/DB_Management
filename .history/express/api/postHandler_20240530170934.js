@@ -30,7 +30,7 @@ router.post('/post', (req, res) => {
                         resolve(results.insertId);
                     }
                 });
-            });
+            }));
         });
 
         // Waiting for all tags being inserted into table

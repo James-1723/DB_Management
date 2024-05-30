@@ -76,8 +76,27 @@ html, body {
 
 .search_icon {
   margin: 10px;
+  padding: 0px;
+  background-color: #FFB140;
+  border: none;
 }
 
 .search_icon:hover {
   cursor: pointer; /* 鼠標變成手指狀態 */
 }
+
+.navbar span:hover {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navbar span {
+  margin-left: 10px;
+  text-decoration: none;
+  padding: 6px;
+  color: #000;
+}
+

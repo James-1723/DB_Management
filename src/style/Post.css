@@ -1,28 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-.post {
-    padding: 10px;
-    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #f2f2f2;
-    background-color: antiquewhite;
-    height: 200px;
-    width: 900px;
-    padding: 30px;
-    border-radius: 5%;
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.post_inside{
+.post {
+    position: relative;
+    padding: 30px;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    width: 840px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+/*.post-inside{
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: #E1D4C1;
+    border-bottom: 1px solid #f2f2f2;
+    color: rgb(245, 245, 245);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
     height: 100px;
     width: 840px;
     padding: 30px;
     border-radius: 20px;
-}
+    margin-bottom: 30px;
+}*/
 
 .poster-info {
     display: flex;

@@ -12,7 +12,7 @@
 }
 
 .filter-modal-content {
-    background: white;
+    background: rgb(245, 245, 245);
     padding: 20px;
     border-radius: 8px;
     width: 80%;
@@ -35,11 +35,23 @@
 }
 
 .modal-tag.selected {
-    background: #007bff;
+    background: #FFB140;
     color: white;
-    border-color: #007bff;
+    border-color: #FFB140;
 }
 
+.modal-search-button, .modal-cancel-button {
+    width: 70px;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: box-shadow 0.3 ease-in-out;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
 button {
     margin: 10px;
 }

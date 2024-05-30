@@ -1,0 +1,9 @@
+.filter-container {
+    width: 70%;
+    height: 70%;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #f2f2f2;
+    background-color: antiquewhite;
+    padding: 30px;
+    border-radius: 5%;
+}

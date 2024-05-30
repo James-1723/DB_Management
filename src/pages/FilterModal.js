@@ -47,8 +47,8 @@ const FilterModal = ({ isOpen, onClose }) => {
                         </span>
                     ))}
                 </div>
-                <button onClick={handleApplyFilters}>搜尋</button>
-                <button onClick={onClose}>取消</button>
+                <button className='modal-search-button' onClick={handleApplyFilters}>搜尋</button>
+                <button className='modal-cancel-button' onClick={onClose}>取消</button>
             </div>
         </div>
     );
