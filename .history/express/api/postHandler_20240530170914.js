@@ -22,7 +22,7 @@ router.post('/post', (req, res) => {
         // Insert data into `tag`
         const tagQuery = 'INSERT INTO tag (tag_name, tag_type) VALUES (?, ?)';
         const tagPromises = selectedTags.map(tag => {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject => {
                 db.query(tagQuery, [tag.tag_name, tag.tag_type], (err, results) => {
                     if (err) {
                         reject(err);
@@ -30,7 +30,7 @@ router.post('/post', (req, res) => {
                         resolve(results.insertId);
                     }
                 });
-            });
+            }));
         });
 
         // Waiting for all tags being inserted into table
