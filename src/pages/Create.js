@@ -56,30 +56,35 @@ const Create = () => {
     }
 
     return ( 
-        <div>
-            <h2>建立新貼文</h2>
-            <p>標題</p>
-            <input
-                type="text"
-                required
-            ></input>
-            <p>內容</p>
-            <input
-                type="text"
-                required
-            ></input>
-            <p>標籤</p>
-            <Select
-                value={selectedTags}
-                onChange={handleChange}
-                onInputChange={handleInputChange}
-                options={options}
-                isClearable
-                isSearchable
-                isMulti
-                placeholder="Enter or select tags"
-            />
-            <button onClick={createPost}>建立</button>
+        <div className='create-container'>
+            <div className='create-form'>
+                <h2>建立新貼文</h2>
+                <div className='create-content'>
+                    <p>標題</p>
+                    <input
+                        type="text"
+                        required
+                    ></input>
+                    <p>內容</p>
+                    <input
+                        type="text"
+                        required
+                    ></input>
+                    <p>標籤</p>
+                    <Select
+                        value={selectedTags}
+                        onChange={handleChange}
+                        onInputChange={handleInputChange}
+                        options={options}
+                        isClearable
+                        isSearchable
+                        isMulti
+                        placeholder="Enter or select tags"
+                    />
+                    <button className="create-button" onClick={createPost}>建立</button>
+                </div>
+            </div>
+            
         </div>
     );
 }

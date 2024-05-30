@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300&display=swap');
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #FFB140;
+}
+
 .navbar a:hover {
     color: black;
     font-weight: bold;
@@ -7,19 +22,41 @@
     border-radius: 10px;
 }
 
-.navbar {
+/*.navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  /* max-width: 800px; */
-  width: 1400px;
-  /* margin: 0 auto; */
+  width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   background-color: #FFB140;
+}*/
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+  color: #FFB140;
 }
-.navbar .home-link{
-  left: 800px;
+
+.home-link {
+  flex: 1;
 }
+
+.search-bar {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+}
+
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navbar .home-link a {
   color: #040404;
   font-size: 20px;
@@ -30,16 +67,6 @@
     color: black;
 }
 
-.navbar .links {
-  margin-left: auto;
-  display: flex;
-  /*justify-content: flex-start; /*讓連結從左側開始水平排列*/
-}
-
-.filter-link :hover {
-  color: #ffffff;
-}
-
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
@@ -47,17 +74,10 @@
   color: #000;
 }
 
-.search-bar {
-  position: relative;
-  width: 400px;
-  margin: auto;
-  display: inline-flex;
-  left: 200px;
-}
-
-.search_icon{
+.search_icon {
   margin: 10px;
 }
+
 .search_icon:hover {
   cursor: pointer; /* 鼠標變成手指狀態 */
 }
