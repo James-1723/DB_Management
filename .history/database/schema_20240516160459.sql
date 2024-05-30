@@ -97,6 +97,6 @@ CREATE TABLE IF NOT EXISTS `test_post` (
   `title` varchar(45) NOT NULL,
   `content` varchar(90) NOT NULL,
   `value`  int NOT NULL,
-  `label` varchar(10) NOT NULL,
+  `label` varchar(10) NOT NULL
   PRIMARY KEY (`post_ID`)
 );
