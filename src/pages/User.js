@@ -52,7 +52,7 @@ const User = () => {
 
     return ( 
         <div>
-            <h2 className={displayName ? '' : 'hide'}>Hello, {displayName} this is your personal page</h2>
+            <h2 className={displayName ? '' : 'hide'}>Hello {displayName}, this is your personal page</h2>
             <div>
                 {
                     posts ? posts.map((post, index) => {
@@ -70,9 +70,6 @@ const User = () => {
                     }) : ''
                 }
             </div>
-
-
-            <button onClick={logout}>Log out</button>
         </div>
     );
 }
