@@ -46,31 +46,3 @@ CREATE TABLE IF NOT EXISTS `manager` (
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`manager_id`)
-) 
-CREATE TABLE IF NOT EXISTS `interaction` (
-   `post_id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `is_shared` tinyint NOT NULL,
-  `sharer_id` int DEFAULT NULL,
-  `is_saved` tinyint NOT NULL,
-  `saver_id` int DEFAULT NULL,
-  PRIMARY KEY (`post_id`),
-  KEY `user_ID_idx` (`user_id`),
-  CONSTRAINT `post_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  CONSTRAINT `user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-)
-
-CREATE TABLE IF NOT EXISTS `image` (
-  `image_id` int NOT NULL AUTO_INCREMENT,
-  `image` longblob,
-  PRIMARY KEY (`image_id`)
-)
-CREATE TABLE IF NOT EXISTS `comment` (
-  `comment_id` int NOT NULL AUTO_INCREMENT,
-  `post_id` int NOT NULL,
-  `comment_text` varchar(45) NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `post_ID_idx` (`post_id`),
-  CONSTRAINT `post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
-)
