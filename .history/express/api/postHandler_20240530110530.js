@@ -7,9 +7,9 @@ router.post('/post', (req, res) => {
     // Logic of posting
     const { title, content, selectedTags } = req.body;
     const { share_tag, like_tag, comment_tag } = selectedTags;
-    const query = 'INSERT INTO post (title, content, share_tag, like_tag, comment_tag) VALUES (?, ?, ?, ?, ?)'
+    const query = 'INSERT INTO post VALUES(title, content, share_tag, like_tag, comment_tag)'
 
-    db.query(query, [title, content, share_tag, like_tag, comment_tag], (err, results) => {
+    db.query(query, [title, text, share_tag, like_tag, comment_tag], (err, results) => {
 
         if (err) {
             console.error('Error inserting data: ', err);
