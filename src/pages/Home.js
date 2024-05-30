@@ -40,7 +40,7 @@ const Home = () => {
             {/* api 待開發 */}
             {/* <div className="post" onClick={() => {handlePostClick(post_id)}}> */}
             <div className="post">
-                <div className="post_inside">
+                <div className="post-inside">
                     <div className='poster-info'>
                         <div className='poster-pic' style={{backgroundColor: 'orange', color: 'white'}}>
                             {name.charAt(0).toUpperCase()}
