@@ -6,7 +6,7 @@
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #f2f2f2;
     background-color: antiquewhite;
-    height: 800px;
+    height: 200px;
     width: 900px;
     padding: 30px;
     border-radius: 5%;
@@ -18,13 +18,12 @@
     position: relative;
     background-color: #E1D4C1;
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
-    /* border-bottom: 1px solid #f2f2f2; */
-    height: 200px;
+    height: 100px;
     width: 840px;
     padding: 30px;
     border-radius: 20px;
-   
 }
+
 .poster-info {
     display: flex;
     gap: 10px;
