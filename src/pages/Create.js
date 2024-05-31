@@ -14,7 +14,6 @@ const Create = () => {
     const [selectedTags, setselectedTags] = useState([]);
     
     const [options, setOptions] = useState()
-
     const handleChange = (selectedTags) => {
         setselectedTags(selectedTags);
     }
@@ -52,7 +51,7 @@ const Create = () => {
         if (response.ok) {
             navigate('/');
             console.log('post created');
-        }
+        } 
     }
 
     return ( 
