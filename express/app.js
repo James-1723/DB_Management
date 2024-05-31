@@ -3,6 +3,7 @@ import mysql from 'mysql2'
 import cors from './middleware/cors.js'
 import userRouters from './api/userHandler.js';
 import tagsHandler from './api/tagsHandler.js';
+import postHandler from './api/postHandler.js';
 
 
 const app = express()
@@ -11,6 +12,7 @@ app.use(cors);
 
 app.use('/api', userRouters);
 app.use('/api', tagsHandler);
+app.use('/api', postHandler);
 
 
 app.listen(8000, () => {

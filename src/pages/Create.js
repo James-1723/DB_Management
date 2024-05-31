@@ -64,11 +64,15 @@ const Create = () => {
                     <input
                         type="text"
                         required
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     ></input>
                     <p>內容</p>
                     <input
                         type="text"
                         required
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                     ></input>
                     <p>標籤</p>
                     <Select
