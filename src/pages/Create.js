@@ -46,9 +46,9 @@ const Create = () => {
         const reader = new FileReader();
         reader.addEventListener('load',()=>{ //load 監聽器可以在圖片讀取完之後觸發
             setSelectedImg(reader.result) //reader result 是base64 編碼的字符串
-          
+            console.log('image set');
         })
-        // reader.readAsDataURL(img);
+        reader.readAsDataURL(img);
         console.log(img)
         // const base64String = await new Promise((resolve, reject) => {
         //     reader.onloadend = () => resolve(reader.result);
@@ -93,22 +93,26 @@ const Create = () => {
                     <input
                         type="text"
                         required
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     ></input>
                     <p>內容</p>
                     <input
                         type="text"
                         required
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                     ></input>
                     <p>標籤</p>
                     <input 
                         type="file"
                         required
-                        // value={"img"}
+                        //value={"img"}
                         onChange={(e) => handleFileChange(e)}
-                        ></input>
-                        {selectedImg && (
-                            <img src={selectedImg} alt="Selected" style={{ width: '200px' }} />
-                        )}
+                    ></input>
+                    {selectedImg && (
+                        <img src={selectedImg} alt="Selected" style={{ width: '200px' }} />
+                    )}
                     <Select
                         value={selectedTags}
                         onChange={handleChange}
