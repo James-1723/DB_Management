@@ -1,0 +1,1 @@
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (1, 'cucumber', 'type');

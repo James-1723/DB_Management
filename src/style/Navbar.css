@@ -1,39 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #FFB140;
+}
+
 .navbar a:hover {
-    color: #ffffff;
+    color: black;
     font-weight: bold;
-    background-color: orange;
+    background-color: white;
     border-radius: 10px;
 }
 
-.navbar {
+/*.navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
-}
-.navbar .home-link a {
+  background-color: #FFB140;
+}*/
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
   color: #FFB140;
+}
+
+.home-link {
+  flex: 1;
+}
+
+.search-bar {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+}
+
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar .home-link a {
+  color: #040404;
   font-size: 20px;
   font-weight: bold;
 }
 
 .navbar .home-link a:hover {
-    color: #ffffff;
-}
-
-.navbar .links {
-  margin-left: auto;
+    color: black;
 }
 
 .navbar a {
-  margin-left: 16px;
+  margin-left: 10px;
   text-decoration: none;
   padding: 6px;
   color: #000;
 }
 
-.search-bar {
-  margin: auto;
+.search_icon {
+  margin: 10px;
+  padding: 0px;
+  background-color: #FFB140;
+  border: none;
 }
+
+.search_icon:hover {
+  cursor: pointer; /* 鼠標變成手指狀態 */
+}
+
+.navbar span:hover {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navbar span {
+  margin-left: 10px;
+  text-decoration: none;
+  padding: 6px;
+  color: #000;
+}
+

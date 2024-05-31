@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import '../style/Sign-up.css'
 
 const Signup = () => {
 
@@ -34,30 +35,34 @@ const Signup = () => {
     }
 
     return ( 
-        <div className="register">
-            <h2>Sign up</h2>
-            <p>Name</p>
-            <input
-                type='text'
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                required
-            ></input>
-            <p>Email</p>
-            <input
-                type='text'
-                value={userEmail}
-                onChange={e => setUserEmail(e.target.value)}
-                required
-            ></input>
-            <p>Password</p>
-             <input
-                type='password'
-                value={userPassword}
-                onChange={e => setUserPassword(e.target.value)}
-                required
-            ></input>
-            <button onClick={submitRegisterInput}>Sign up</button>
+        <div className="sign-up-container">
+            <div className='sign-up-form'>
+                <h2>註冊</h2>
+                <div className='input-container'>
+                    <p>名字</p>
+                    <input
+                        type='text'
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        required
+                    ></input>
+                    <p>電子信箱</p>
+                    <input
+                        type='text'
+                        value={userEmail}
+                        onChange={e => setUserEmail(e.target.value)}
+                        required
+                    ></input>
+                    <p>密碼</p>
+                    <input
+                        type='password'
+                        value={userPassword}
+                        onChange={e => setUserPassword(e.target.value)}
+                        required
+                    ></input>
+                </div>
+            </div>
+            <button className='sign-up-button' onClick={submitRegisterInput}>註冊</button>
         </div>
     );
 }

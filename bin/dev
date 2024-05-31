@@ -1,0 +1,9 @@
+echo "啟動後端伺服器"
+cd express
+node app.js &
+
+echo "啟動前端框架"
+cd ..
+npm run start &
+
+wait
