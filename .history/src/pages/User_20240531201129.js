@@ -20,42 +20,34 @@ const User = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/api/posts/${user.user_id}', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${user.token}`
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response error');
+            //將測試資料改為以下的api
+            const response = await fetch('http://localhost:8000/api/posts/${user.user_id}', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
                 }
-
-                const data = await response.json();
-                console.log(data);
-                setPosts(data.posts);
-                //setPosts([
-                //    {
-                //        "post_id": 1,
-                //        "post_title": "Hello, World",
-                //        "post_content": "This is a test post",
-                //        "post_tags": ["test", "hello"]
-                //    },
-                //    {
-                //        "post_id": 2,
-                //        "post_title": "Goodbye, World",
-                //        "post_content": "This is another test post",
-                //        "post_tags": ["test", "goodbye"]
-                //    }
-                //])
-            } catch (error) {
-                console.error('Fetch posts failed:', error);
-            }
+            })
+            const data = await response.json();
+            console.log(data);
+            setPosts(data.posts);
+            //setPosts([
+            //    {
+            //        "post_id": 1,
+            //        "post_title": "Hello, World",
+            //        "post_content": "This is a test post",
+            //        "post_tags": ["test", "hello"]
+            //    },
+            //    {
+            //        "post_id": 2,
+            //        "post_title": "Goodbye, World",
+            //        "post_content": "This is another test post",
+            //        "post_tags": ["test", "goodbye"]
+            //    }
+            //])
         }
         fetchPosts();
-    }, [user.user_id, user.token])
+    }, [])
 
     return ( 
         <div>

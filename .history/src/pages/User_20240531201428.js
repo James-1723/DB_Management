@@ -28,11 +28,9 @@ const User = () => {
                         'Authorization': `Bearer ${user.token}`
                     }
                 });
-
                 if (!response.ok) {
                     throw new Error('Network response error');
                 }
-
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);
@@ -51,8 +49,10 @@ const User = () => {
                 //    }
                 //])
             } catch (error) {
-                console.error('Fetch posts failed:', error);
+                
             }
+
+            
         }
         fetchPosts();
     }, [user.user_id, user.token])
