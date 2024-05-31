@@ -14,7 +14,7 @@ const Create = () => {
     const [selectedTags, setselectedTags] = useState([]);
     
     const [options, setOptions] = useState()
-
+    const [selectedImg, setSelectedImg] = useState(null);
     const handleChange = (selectedTags) => {
         setselectedTags(selectedTags);
     }
@@ -39,9 +39,36 @@ const Create = () => {
         fetchOptions();
     }, []);
 
+    const handleFileChange = async (e) => {
+        const img = e.target.files[0]; 
+        if (!img) return;//沒有傳圖片就跳出function
+    
+        const reader = new FileReader();
+        reader.addEventListener('load',()=>{ //load 監聽器可以在圖片讀取完之後觸發
+            setSelectedImg(reader.result) //reader result 是base64 編碼的字符串
+          
+        })
+        // reader.readAsDataURL(img);
+        console.log(img)
+        // const base64String = await new Promise((resolve, reject) => {
+        //     reader.onloadend = () => resolve(reader.result);
+        //     reader.onerror = reject;
+        // });
+    
+        // setSelectedImg(base64String);
+    }
     const createPost = async (e) => {
         e.preventDefault();
-        const post = { title, content, selectedTags };
+        // let base64String = '';
+        // if (setSelectedImg) {
+        // const reader = new FileReader();
+        // reader.readAsDataURL(setSelectedImg);
+        // base64String = await new Promise((resolve, reject) => {
+        //     reader.onloadend = () => resolve(reader.result);
+        //     reader.onerror = reject;
+        // });
+        // }
+        const post = { title, content, selectedTags, selectedImg };
 
         const response = await fetch('http://localhost:8000/api/post', {
             method: 'POST',
@@ -52,6 +79,8 @@ const Create = () => {
         if (response.ok) {
             navigate('/');
             console.log('post created');
+        } else {
+            console.log('connection failed');
         }
     }
 
@@ -64,17 +93,22 @@ const Create = () => {
                     <input
                         type="text"
                         required
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
                     ></input>
                     <p>內容</p>
                     <input
                         type="text"
                         required
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
                     ></input>
                     <p>標籤</p>
+                    <input 
+                        type="file"
+                        required
+                        // value={"img"}
+                        onChange={(e) => handleFileChange(e)}
+                        ></input>
+                        {selectedImg && (
+                            <img src={selectedImg} alt="Selected" style={{ width: '200px' }} />
+                        )}
                     <Select
                         value={selectedTags}
                         onChange={handleChange}
