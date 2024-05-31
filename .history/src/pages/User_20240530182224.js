@@ -21,16 +21,17 @@ const User = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             //將測試資料改為以下的api
-            const response = await fetch('http://localhost:8000/api/posts/${user.user_id}', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const data = await response.json();
-            console.log(data);
-            setPosts(data.posts);
+            
+            // const response = await fetch('http://localhost:8000/api/posts/${user.user_id}', {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': `Bearer ${user.token}`
+            //     }
+            // })
+            // const data = await response.json();
+            // console.log(data);
+            // setPosts(data.posts);
             setPosts([
                 {
                     "post_id": 1,

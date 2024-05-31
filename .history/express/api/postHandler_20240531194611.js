@@ -21,41 +21,12 @@ router.get('/post', (req, res) => {
             return;
         }
 
-        // Dealing with tags 
-        const postIds = postResults.map(post => post.post_id);
-        if (postIds.length === 0) {
-            res.json({ posts: [] });
-            return;
-        }
-
         const tagQuery = `
             SELECT pt.post_id, t.tag_name
-            FROM post_tag pt
-            JOIN tag t ON pt.tag_id = t.tag_id
+            FROM post_tag t
+            JOIN tag t on pt.tag_id = t.tag_id
             WHERE pt.post_id IN (?)
         `;
-
-        db.query(tagQuery, [postIds], (err, tagResults) => {
-            if (err) {
-                console.error('Error fetching posts: ', err);
-                res.status(500).send('Server error');
-                return;
-            }
-
-            // Combining tags into post
-            const posts = postResults.map(post => {
-                return {
-                    post_id: post.post_id,
-                    post_title: post.post_title,
-                    post_content: post.post_content,
-                    post_tags: tagResults
-                        .filter(tag => tag.post_id === post.post_id)
-                        .map(tag => tag.tag_name)
-                };
-            }); 
-
-            res.json({ posts });
-        });
     })
 
 });
