@@ -188,3 +188,24 @@ INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (178, 'iodized salt', 'ingre
 INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (179, 'pink salt', 'ingredient');
 INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (180, 'truffle salt', 'ingredient');
 
+-- 鍋具 (181-200)
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (181, 'air fryer', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (182, 'deep fryer', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (183, 'toaster oven', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (184, 'microwave oven', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (185, 'blender', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (186, 'food processor', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (187, 'stand mixer', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (188, 'hand mixer', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (189, 'immersion blender', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (190, 'electric grill', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (191, 'panini press', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (192, 'waffle maker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (193, 'popcorn maker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (194, 'yogurt maker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (195, 'rice cooker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (196, 'slow cooker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (197, 'pressure cooker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (198, 'coffee maker', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (199, 'electric kettle', 'cooker');
+INSERT INTO tag (tag_id, tag_name, tag_type) VALUES (200, 'bread machine', 'cooker');
