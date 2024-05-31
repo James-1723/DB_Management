@@ -31,7 +31,6 @@ connection.connect(error => {
             console.error('Error executing the SQL script: ', err);
             return;
         }
-        console.log('Successfully executed the SQL script: ', results);
     })
 });
 
