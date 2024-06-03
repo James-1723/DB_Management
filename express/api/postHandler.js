@@ -13,7 +13,7 @@ router.get('/post', (req, res) => {
         FROM post
         WHERE post.user_id = ?
     `;
-
+    
     db.query(postQuery, [userId], (err, postResults) => {
         if (err) {
             console.error('Error fetching posts: ', err);
@@ -59,7 +59,32 @@ router.get('/post', (req, res) => {
     })
 
 });
-
+router.get('/post', (req, res) => {
+    const keyword = req.query.query// 使用 req.query.query 來獲取 URL 中的 query string
+    const keywordQuery = `
+        SELECT post_id, title AS post_title, content AS post_content
+        FROM post
+        WHERE title LIKE ? OR content LIKE ?;
+    `;
+    const keywordParam = `%${keyword}%`; // 添加通配符，不知道這是什麼
+     db.query(keywordQuery,[keywordParam, keywordParam], (err, keywordResults) => {
+        if (err) {
+            console.error('Error fetching posts: ', err);
+            res.status(500).send('Server error');
+            return;
+        }
+        // Dealing with keyword
+        const postIds = keywordResults.map(post => post.post_id);
+        if (postIds.length === 0) {
+            res.json({ posts: [] });
+            return;
+        }
+        res.json({ posts: keywordResults });
+     })
+});
+router.post('/post', (req, res) => {
+    const keyword = req.query.query// 使用 req.query.query 來獲取 URL 中的 query string
+})
 router.post('/post', (req, res) => {
     const { title, content, selectedTags } = req.body;
 
