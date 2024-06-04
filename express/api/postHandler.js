@@ -72,7 +72,7 @@ router.get('/posts', (req, res) => {
         FROM post
         JOIN user ON post.user_id = user.user_id
     `;
-
+    
     db.query(postQuery, [userId], (err, postResults) => {
         if (err) {
             console.error('Error fetching posts: ', err);
