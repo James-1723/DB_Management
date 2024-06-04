@@ -20,7 +20,6 @@ export const SearchProvider = ({ children }) => {
                         id: post.post_id
                     }));
                     setResults(searchPosts); // 更新搜尋結果
-                    console.log(results)
                 } else {
                     console.error('Search failed:', data.message);
                 }
