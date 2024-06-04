@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { UserProvider } from './context/UserContext.js'
-import { SearchProvider } from './context/SearchContext.js';
 import Home from './pages/Home.js';
 import Navbar from './pages/Navbar.js';
 import NotFound from './pages/NotFound.js';
@@ -17,8 +16,7 @@ function App() {
     <div className="App">
         <BrowserRouter>
           <UserProvider>
-            <SearchProvider>
-              <Navbar />
+            <Navbar />
               <div className='content'>
                 <Routes>
                   <Route path='*' element={<NotFound />} />
@@ -27,10 +25,8 @@ function App() {
                   <Route path='/sign-up' element={<Signup />} />
                   <Route path='/user' element={<User />} />
                   <Route path='/create' element={<Create />} />
-                  
                 </Routes>
               </div>
-              </SearchProvider>
           </UserProvider>
         </BrowserRouter>
 
