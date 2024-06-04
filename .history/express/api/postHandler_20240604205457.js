@@ -60,6 +60,7 @@ router.get('search', (req, res) => {
 
             res.status(200).json({ success: true, posts, message: 'Posts fetched' });
         });
+
     });
 });
 
