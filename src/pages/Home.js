@@ -46,7 +46,7 @@ const Home = () => {
                             <div className='poster-pic' style={{ backgroundColor: 'orange', color: 'white' }}>
                                 {post.title ? post.title.charAt(0).toUpperCase() : ''}
                             </div>
-                            <p className="poster-name">{post.title}</p>
+                            <p className="poster-name">{post.name}</p>
                         </div>
                         <h3 className='post-title'>{post.title}</h3>
                         {post.tags.map((tag, index) => (
