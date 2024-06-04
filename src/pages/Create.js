@@ -69,7 +69,7 @@ const Create = () => {
         // });
         // }
         const post = { title, content, selectedTags, selectedImg };
-
+        console.log(selectedImg)
         const response = await fetch('http://localhost:8000/api/post', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
