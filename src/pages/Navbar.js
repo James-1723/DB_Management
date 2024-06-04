@@ -6,15 +6,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSquarePlus, faMagnifyingGlass, faArrowRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import FilterModal from './FilterModal.js';
 
-const Navbar = () => {
+const Navbar = ({ setResults }) => { 
     const { user, setUser } = useUser();
     const navigate = useNavigate();
-    const location = useLocation(); // 引入 useLocation 鉤子
+    const location = useLocation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
-        console.log('searching...');
+        if (searchQuery.trim()) {
+            try {
+                const response = await fetch(`http://localhost:8000/api/search?q=${searchQuery}`);
+                const data = await response.json();
+                if (data.success) {
+                    // setResults(data.results); // 更新搜尋結果
+                } else {
+                    console.error('Search failed:', data.message);
+                }
+            } catch (error) {
+                console.error('Error during search:', error);
+            }
+        }
     };
 
     const handleLogout = () => {
@@ -39,14 +52,19 @@ const Navbar = () => {
                     </div>
 
                     <form className='search-bar' onSubmit={handleSearch}>
-                        <input type="text" placeholder="請輸入菜名" />
+                        <input
+                            type="text"
+                            placeholder="請輸入菜名"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                         <button type='submit' className='search_icon'>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </form>
 
                     <div className='links'>
-                        {location.pathname === '/' && ( // 根據當前路徑條件渲染
+                        {location.pathname === '/' && (
                             <div className='filter-link' onClick={handleFilterClick}>
                                 <span>
                                     <FontAwesomeIcon icon={faFilter}/> 篩選 
