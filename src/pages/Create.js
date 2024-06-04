@@ -1,11 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useUser } from '../context/UserContext.js'
-import '../style/Create.css';
-import { useNavigate } from 'react-router-dom';
-import Select from 'react-select';
-
 const Create = () => {
-
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -126,7 +119,6 @@ const Create = () => {
                     <button className="create-button" onClick={createPost}>建立</button>
                 </div>
             </div>
-            
         </div>
     );
 }
