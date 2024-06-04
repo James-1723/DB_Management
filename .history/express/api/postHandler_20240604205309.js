@@ -31,35 +31,8 @@ router.get('search', (req, res) => {
             return;
         }
 
-        // get tag
-        const tagQuery = `
-            SELECT pt.post_id, t.tag_name
-            FROM post_tag pt
-            JOIN tag t ON pt.tag_id = t.tag_id
-            WHERE pt.post_id IN (?)
-        `;
+        // 
 
-        db.query(tagQuery, [postIds], (err, tagResults) => {
-            if (err) {
-                console.error('Error fetching tags: ', err);
-                res.status(500).send('Server error');
-                return;
-            }
-
-            // 將標籤組合到貼文中
-            const posts = searchResults.map(post => {
-                return {
-                    post_id: post.post_id,
-                    post_title: post.post_title,
-                    post_content: post.post_content,
-                    post_tags: tagResults
-                        .filter(tag => tag.post_id === post.post_id)
-                        .map(tag => tag.tag_name)
-                };
-            });
-
-            res.status(200).json({ success: true, posts, message: 'Posts fetched' });
-        });
     });
 });
 
