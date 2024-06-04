@@ -51,12 +51,13 @@ export const SearchProvider = ({ children }) => {
             const data = await response.json();
             if (data.success) {
                 const newPosts = data.posts.map(post => ({
-                    title: post.title,
-                    content: post.content,
-                    tags: post.tags,
-                    id: post.id
+                    title: post.post_title,
+                    content: post.post_content,
+                    tags: post.post_tags,
+                    id: post.post_id
                 }));
-                setResults(newPosts);        
+                setResults(newPosts);
+                console.log(results);  
             } else {
                 console.error('Failed to fetch posts:', data.message);
             }
