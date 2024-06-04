@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `image` (
 CREATE TABLE IF NOT EXISTS  `post` (
   `title` varchar(225) NOT NULL,
   `post_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
   `content` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
   `like_tag` int DEFAULT NULL,
@@ -23,6 +24,8 @@ CREATE TABLE IF NOT EXISTS  `post` (
   `image_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `image_ID_idx` (`image_id`),
+  KEY `user_ID_idx` (`user_id`),
+  CONSTRAINT `user_ID_post` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   CONSTRAINT `image_ID` FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`)
 );
 
@@ -61,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `interaction` (
   PRIMARY KEY (`post_id`),
   KEY `user_ID_idx` (`user_id`),
   CONSTRAINT `post_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE,
-  CONSTRAINT `user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `interaction_user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `report` (
