@@ -14,14 +14,18 @@ CREATE TABLE IF NOT EXISTS `image` (
 );
 
 CREATE TABLE IF NOT EXISTS  `post` (
+  `title` varchar(225) NOT NULL,
   `post_id` int NOT NULL AUTO_INCREMENT,
-  `text` varchar(200) DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `content` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
   `like_tag` int DEFAULT NULL,
   `comment_tag` int DEFAULT NULL,
   `image_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `image_ID_idx` (`image_id`),
+  KEY `user_ID_idx` (`user_id`),
+  CONSTRAINT `user_ID_post` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   CONSTRAINT `image_ID` FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`)
 );
 
@@ -31,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `comment_text` varchar(45) NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `post_ID_idx` (`post_id`),
-  CONSTRAINT `post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
+  CONSTRAINT `post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE
 );
 
 
@@ -59,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `interaction` (
   `saver_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
   KEY `user_ID_idx` (`user_id`),
-  CONSTRAINT `post_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  CONSTRAINT `user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `post_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE,
+  CONSTRAINT `interaction_user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `report` (
@@ -72,16 +76,16 @@ CREATE TABLE IF NOT EXISTS `report` (
   KEY `post_ID_idx` (`post_id`),
   KEY `comment_ID_idx` (`repCom_id`),
   KEY `manager_id_idx` (`manager_id`),
-  CONSTRAINT `comment_ID` FOREIGN KEY (`repCom_id`) REFERENCES `comment` (`comment_id`),
-  CONSTRAINT `manager_id` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`manager_id`),
-  CONSTRAINT `po_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-  CONSTRAINT `user_user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `comment_ID` FOREIGN KEY (`repCom_id`) REFERENCES `comment` (`comment_id`) ON DELETE CASCADE,
+  CONSTRAINT `manager_id` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`manager_id`) ON DELETE CASCADE,
+  CONSTRAINT `po_post_ID` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE,
+  CONSTRAINT `user_user_ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS  `post_tag` (
     `post_id` int NOT NULL,
     `tag_id` int NOT NULL,
     PRIMARY KEY (`post_id`,`tag_id`),
-    CONSTRAINT `post_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
-    CONSTRAINT `tag_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
+    CONSTRAINT `post_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE,
+    CONSTRAINT `tag_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE
 )

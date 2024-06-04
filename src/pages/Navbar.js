@@ -1,33 +1,23 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useUser } from '../context/UserContext.js';
+import { useSearch } from '../context/SearchContext.js'; // 引入 useSearch
 import '../style/Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSquarePlus, faMagnifyingGlass, faArrowRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import FilterModal from './FilterModal.js';
 
-const Navbar = ({ setResults }) => { 
+const Navbar = () => {
     const { user, setUser } = useUser();
+    const { handleKeywordSearch } = useSearch(); // 使用 useSearch
     const navigate = useNavigate();
     const location = useLocation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearch = async (e) => {
+    const handleSearchSubmit = (e) => {
         e.preventDefault();
-        if (searchQuery.trim()) {
-            try {
-                const response = await fetch(`http://localhost:8000/api/search?q=${searchQuery}`);
-                const data = await response.json();
-                if (data.success) {
-                    // setResults(data.results); // 更新搜尋結果
-                } else {
-                    console.error('Search failed:', data.message);
-                }
-            } catch (error) {
-                console.error('Error during search:', error);
-            }
-        }
+        handleKeywordSearch(searchQuery);
     };
 
     const handleLogout = () => {
@@ -51,7 +41,7 @@ const Navbar = ({ setResults }) => {
                         <Link to='/'>HomePage</Link>
                     </div>
 
-                    <form className='search-bar' onSubmit={handleSearch}>
+                    <form className='search-bar' onSubmit={handleSearchSubmit}>
                         <input
                             type="text"
                             placeholder="請輸入菜名"
