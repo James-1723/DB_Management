@@ -1,11 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useUser } from '../context/UserContext.js'
-import '../style/Create.css';
-import { useNavigate } from 'react-router-dom';
-import Select from 'react-select';
-
 const Create = () => {
-
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -46,9 +39,9 @@ const Create = () => {
         const reader = new FileReader();
         reader.addEventListener('load',()=>{ //load 監聽器可以在圖片讀取完之後觸發
             setSelectedImg(reader.result) //reader result 是base64 編碼的字符串
-          
+            console.log('image set');
         })
-        // reader.readAsDataURL(img);
+        reader.readAsDataURL(img);
         console.log(img)
         // const base64String = await new Promise((resolve, reject) => {
         //     reader.onloadend = () => resolve(reader.result);
@@ -69,7 +62,7 @@ const Create = () => {
         // });
         // }
         const post = { title, content, selectedTags, selectedImg };
-
+        console.log(selectedImg)
         const response = await fetch('http://localhost:8000/api/post', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -93,22 +86,26 @@ const Create = () => {
                     <input
                         type="text"
                         required
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     ></input>
                     <p>內容</p>
                     <input
                         type="text"
                         required
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                     ></input>
                     <p>標籤</p>
                     <input 
                         type="file"
                         required
-                        // value={"img"}
+                        //value={"img"}
                         onChange={(e) => handleFileChange(e)}
-                        ></input>
-                        {selectedImg && (
-                            <img src={selectedImg} alt="Selected" style={{ width: '200px' }} />
-                        )}
+                    ></input>
+                    {selectedImg && (
+                        <img src={selectedImg} alt="Selected" style={{ width: '200px' }} />
+                    )}
                     <Select
                         value={selectedTags}
                         onChange={handleChange}
@@ -122,7 +119,6 @@ const Create = () => {
                     <button className="create-button" onClick={createPost}>建立</button>
                 </div>
             </div>
-            
         </div>
     );
 }

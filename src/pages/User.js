@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useUser } from '../context/UserContext.js';
 import { useNavigate } from 'react-router-dom';
 
-import '../style/Post.css';
-
 const User = () => {
     const {user, setUser} = useUser();
-    const [posts, setPosts] = useState([]);
-
     const displayName = user && user.user_name ? user.user_name : '';
     const navigate = useNavigate();
 
@@ -17,7 +13,6 @@ const User = () => {
         navigate('/')
         console.log('登出成功')
     }
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -56,27 +51,11 @@ const User = () => {
         }
         fetchPosts();
     }, [user.user_id, user.token])
-
     return ( 
         <div>
-            <h2 className={displayName ? '' : 'hide'}>Hello {displayName}, this is your personal page</h2>
-            <div>
-                {
-                    posts ? posts.map((post, index) => {
-                        return (
-                            <div key={index} className='post'>
-                                <h3>{post.post_title}</h3>
-                                <p>{post.post_content}</p>
-                                <div>
-                                    {post.post_tags.map((tag, index) => {
-                                        return <span key={index}>{tag}</span>
-                                    })}
-                                </div>
-                            </div>
-                        )
-                    }) : ''
-                }
-            </div>
+            <p>This is title page</p>
+            <p className={displayName ? '' : 'hide'}>Hello, {displayName}</p>
+            <button onClick={logout}>Log out</button>
         </div>
     );
 }
