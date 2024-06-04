@@ -24,14 +24,11 @@ router.get('/search', (req, res) => {
         // Get id
         const postIds = searchResults.map(post => post.post_id);
         if (postIds.length === 0) {
-            
-            const postQuery = `
-                SELECT post.post_id, post.title AS post_title, post.content AS post_content
-                FROM post
-            `;
-
-            db.query(postQuery, (err, postResults))
-
+            res.json({
+                success: true,
+                posts: []
+            });
+            return;
         }
 
         // get tag

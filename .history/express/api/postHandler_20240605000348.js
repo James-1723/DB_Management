@@ -30,7 +30,7 @@ router.get('/search', (req, res) => {
                 FROM post
             `;
 
-            db.query(postQuery, (err, postResults))
+            
 
         }
 

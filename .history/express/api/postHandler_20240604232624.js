@@ -24,14 +24,11 @@ router.get('/search', (req, res) => {
         // Get id
         const postIds = searchResults.map(post => post.post_id);
         if (postIds.length === 0) {
-            
-            const postQuery = `
-                SELECT post.post_id, post.title AS post_title, post.content AS post_content
-                FROM post
-            `;
-
-            db.query(postQuery, (err, postResults))
-
+            res.json({
+                success: true,
+                posts: []
+            });
+            return;
         }
 
         // get tag
@@ -57,8 +54,7 @@ router.get('/search', (req, res) => {
                     post_content: post.post_content,
                     post_tags: tagResults
                         .filter(tag => tag.post_id === post.post_id)
-                        .map(tag => tag.tag_name),
-                    user_name: post.user_name
+                        .map(tag => tag.tag_name)
                 };
             });
 

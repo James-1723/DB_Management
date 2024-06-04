@@ -24,14 +24,37 @@ router.get('/search', (req, res) => {
         // Get id
         const postIds = searchResults.map(post => post.post_id);
         if (postIds.length === 0) {
-            
-            const postQuery = `
-                SELECT post.post_id, post.title AS post_title, post.content AS post_content
-                FROM post
+            res.json({
+                success: true,
+                posts: []
+            });
+            const tagQuery = `
+            SELECT pt.post_id, t.tag_name
+            FROM post_tag pt
+            JOIN tag t ON pt.tag_id = t.tag_id
+            WHERE pt.post_id IN (?)
             `;
+            db.query(tagQuery, [postIds], (err, tagResults) => {
+                if (err) {
+                    console.error('Error fetching posts: ', err);
+                    res.status(500).send('Server error');
+                    return;
+                }
 
-            db.query(postQuery, (err, postResults))
+                // Combining tags into post
+                const posts = postResults.map(post => {
+                    return {
+                        post_id: post.post_id,
+                        post_title: post.post_title,
+                        post_content: post.post_content,
+                        post_tags: tagResults
+                            .filter(tag => tag.post_id === post.post_id)
+                            .map(tag => tag.tag_name)
+                    };
+                }); 
 
+                res.status(200).json({ success: true, posts, message: 'Posts fetched' });
+            });
         }
 
         // get tag
