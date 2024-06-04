@@ -3,38 +3,31 @@ import db from '../config/db.js';
 
 const router = Router();
 
-router.get('/search', (req, res) => {
+router.get('/posts', (req, res) => {
 
-    const keyword = req.query.query;
+    const userId = req.query.userId;
 
-    // Search post with keyword in DB
-    const searchQuery = `
-        SELECT p.post_id, p.title AS post_title, p.content AS post_content
-        FROM post p
-        WHERE p.title LIKE ?
+    // Acquired every post
+    const postQuery = `
+        SELECT post.post_id, post.title AS post_title, post.content AS post_content
+        FROM post
+        WHERE post.user_id = ?
     `;
 
-    db.query(searchQuery, [`%${keyword}%`], (err, searchResults) => {
+    db.query(postQuery, [userId], (err, postResults) => {
         if (err) {
-            console.error('Error searching posts: ', err);
+            console.error('Error fetching posts: ', err);
             res.status(500).send('Server error');
             return;
         }
 
-        // Get id
-        const postIds = searchResults.map(post => post.post_id);
+        // Dealing with tags 
+        const postIds = postResults.map(post => post.post_id);
         if (postIds.length === 0) {
-            
-            const postQuery = `
-                SELECT post.post_id, post.title AS post_title, post.content AS post_content
-                FROM post
-            `;
-
-            db.query(postQuery, (err, postResults))
-
+            res.json({ posts: [] });
+            return;
         }
 
-        // get tag
         const tagQuery = `
             SELECT pt.post_id, t.tag_name
             FROM post_tag pt
@@ -44,23 +37,22 @@ router.get('/search', (req, res) => {
 
         db.query(tagQuery, [postIds], (err, tagResults) => {
             if (err) {
-                console.error('Error fetching tags: ', err);
+                console.error('Error fetching posts: ', err);
                 res.status(500).send('Server error');
                 return;
             }
 
-            // 將標籤組合到貼文中
-            const posts = searchResults.map(post => {
+            // Combining tags into post
+            const posts = postResults.map(post => {
                 return {
                     post_id: post.post_id,
                     post_title: post.post_title,
                     post_content: post.post_content,
                     post_tags: tagResults
                         .filter(tag => tag.post_id === post.post_id)
-                        .map(tag => tag.tag_name),
-                    user_name: post.user_name
+                        .map(tag => tag.tag_name)
                 };
-            });
+            }); 
 
             res.status(200).json({ success: true, posts, message: 'Posts fetched' });
         });
@@ -124,6 +116,63 @@ router.get('/posts', (req, res) => {
 router.post('/post', async (req, res) => {
     const { title, content, selectedTags, selectImage, user_id } = req.body;
 
+    const userId = req.params.userId;
+
+    // Acquired every post
+    const postQuery = `
+        SELECT post.post_id, post.title AS post_title, post.text AS post_content
+        FROM post
+        WHERE post.user_id = ?
+    `;
+
+    db.query(postQuery, [userId], (err, postResults) => {
+        if (err) {
+            console.error('Error fetching posts: ', err);
+            res.status(500).send('Server error');
+            return;
+        }
+
+        // Dealing with tags 
+        const postIds = postResults.map(post => post.post_id);
+        if (postIds.length === 0) {
+            res.json({ posts: [] });
+            return;
+        }
+
+        const tagQuery = `
+            SELECT pt.post_id, t.tag_name
+            FROM post_tag pt
+            JOIN tag t ON pt.tag_id = t.tag_id
+            WHERE pt.post_id IN (?)
+        `;
+
+        db.query(tagQuery, [postIds], (err, tagResults) => {
+            if (err) {
+                console.error('Error fetching posts: ', err);
+                res.status(500).send('Server error');
+                return;
+            }
+
+            // Combining tags into post
+            const posts = postResults.map(post => {
+                return {
+                    post_id: post.post_id,
+                    post_title: post.post_title,
+                    post_content: post.post_content,
+                    post_tags: tagResults
+                        .filter(tag => tag.post_id === post.post_id)
+                        .map(tag => tag.tag_name)
+                };
+            }); 
+
+            res.json({ posts });
+        });
+    })
+
+});
+
+router.post('/post', (req, res) => {
+    const { title, content, selectedTags } = req.body;
     try {
         // Insert image and get imgId
         const imgResults = await db.promise().query('INSERT INTO image (image) VALUES (?)', [selectImage]);
