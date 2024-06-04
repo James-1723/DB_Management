@@ -68,13 +68,14 @@ router.get('/search', (req, res) => {
 });
 
 router.get('/posts', (req, res) => {
+
     const userId = req.query.userId;
 
-    // Acquired every post with user name
+    // Acquired every post
     const postQuery = `
-        SELECT post.post_id, post.user_id, post.title AS post_title, post.content AS post_content, user.user_name
+        SELECT post.post_id, post.title AS post_title, post.content AS post_content
         FROM post
-        JOIN user ON post.user_id = user.user_id
+        WHERE post.user_id = ?
     `;
 
     db.query(postQuery, [userId], (err, postResults) => {
@@ -100,11 +101,12 @@ router.get('/posts', (req, res) => {
 
         db.query(tagQuery, [postIds], (err, tagResults) => {
             if (err) {
-                console.error('Error fetching tags: ', err);
+                console.error('Error fetching posts: ', err);
                 res.status(500).send('Server error');
                 return;
             }
 
+            // Combining tags into post
             const posts = postResults.map(post => {
                 return {
                     post_id: post.post_id,
@@ -112,28 +114,29 @@ router.get('/posts', (req, res) => {
                     post_content: post.post_content,
                     post_tags: tagResults
                         .filter(tag => tag.post_id === post.post_id)
-                        .map(tag => tag.tag_name),
-                    user_name: post.user_name
+                        .map(tag => tag.tag_name)
                 };
-            });
+            }); 
+
             res.status(200).json({ success: true, posts, message: 'Posts fetched' });
         });
-    });
+    })
+
 });
 
 router.post('/post', async (req, res) => {
     const { title, content, selectedTags, selectImage, user_id } = req.body;
 
     try {
-        // Insert image and get imgId
+        // 插入圖片並獲取 imgId
         const imgResults = await db.promise().query('INSERT INTO image (image) VALUES (?)', [selectImage]);
         const imgId = imgResults[0].insertId;
 
-        // Insert post
+        // 插入貼文
         const postResults = await db.promise().query('INSERT INTO post (title, content, user_id, image_id) VALUES (?, ?, ?, ?)', [title, content, user_id, imgId]);
         const postId = postResults[0].insertId;
 
-        // Insert tags
+        // 插入標籤
         await Promise.all(selectedTags.map(tag => {
             return db.promise().query('INSERT INTO post_tag (post_id, tag_id) VALUES (?, ?)', [postId, tag.value]);
         }));
