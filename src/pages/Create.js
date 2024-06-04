@@ -5,7 +5,6 @@ import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
-
     const navigate = useNavigate();
     const { user } = useUser();
     const [title, setTitle] = useState('');
@@ -129,7 +128,6 @@ const Create = () => {
                     <button className="create-button" onClick={createPost}>建立</button>
                 </div>
             </div>
-            
         </div>
     );
 }
