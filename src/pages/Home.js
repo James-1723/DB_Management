@@ -15,7 +15,7 @@ const Home = () => {
         if (user) {
             getPostList(user.user_id); // 獲取推薦貼文
         }
-    }, [user, getPostList]);
+    }, [user]);
 
     useEffect(() => {
         if (selectedTags.length > 0) {
@@ -39,12 +39,12 @@ const Home = () => {
 
     return (
         <div>
-            {results.map(post => (
+            {results && results.map(post => (
                 <div key={post.id} className="post" onClick={() => handlePostClick(post.id)}>
                     <div className="post_inside">
                         <div className='poster-info'>
                             <div className='poster-pic' style={{ backgroundColor: 'orange', color: 'white' }}>
-                                {post.title.charAt(0).toUpperCase()}
+                                {post.title ? post.title.charAt(0).toUpperCase() : ''}
                             </div>
                             <p className="poster-name">{post.title}</p>
                         </div>

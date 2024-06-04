@@ -7,6 +7,7 @@ import Select from 'react-select';
 const Create = () => {
 
     const navigate = useNavigate();
+    const { user } = useUser();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
@@ -68,7 +69,9 @@ const Create = () => {
         //     reader.onerror = reject;
         // });
         // }
-        const post = { title, content, selectedTags, selectedImg };
+
+        //多傳入一個user_id
+        const post = { title, content, selectedTags, selectedImg, user_id: user.user_id};
         console.log(selectedImg)
         const response = await fetch('http://localhost:8000/api/post', {
             method: 'POST',

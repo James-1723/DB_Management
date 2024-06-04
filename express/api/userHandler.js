@@ -36,7 +36,8 @@ router.post('/login', (req, res) => {
             if(user.user_password === user_password) {
                 const user_object = {
                     user_name: user.user_name,
-                    user_email: user.user_email
+                    user_email: user.user_email,
+                    user_id: user.user_id
                 }
                 res.json({ success: true, message: "登入成功", user: user_object})
             } else {
