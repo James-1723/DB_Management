@@ -60,6 +60,7 @@ router.get('search', (req, res) => {
 
             res.status(200).json({ success: true, posts, message: 'Posts fetched' });
         });
+
     });
 });
 
@@ -73,7 +74,7 @@ router.get('/posts', (req, res) => {
         FROM post
         WHERE post.user_id = ?
     `;
-    
+
     db.query(postQuery, [userId], (err, postResults) => {
         if (err) {
             console.error('Error fetching posts: ', err);
