@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSearch } from '../context/SearchContext.js'; // 引入 useSearch
 import '../style/Post.css';
 
 const Home = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { user } = useUser();
     const { results, getPostList, handleTagSearch } = useSearch(); // 使用 useSearch
@@ -15,7 +16,7 @@ const Home = () => {
         if (user) {
             getPostList(user.user_id); // 獲取推薦貼文
         }
-    }, [user]);
+    }, [user, location]);
 
     useEffect(() => {
         if (selectedTags.length > 0) {
@@ -44,7 +45,7 @@ const Home = () => {
                     <div className="post_inside">
                         <div className='poster-info'>
                             <div className='poster-pic' style={{ backgroundColor: 'orange', color: 'white' }}>
-                                {post.title ? post.title.charAt(0).toUpperCase() : ''}
+                                {post.name ? post.name.charAt(0).toUpperCase() : ''}
                             </div>
                             <p className="poster-name">{post.name}</p>
                         </div>
