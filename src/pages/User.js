@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useUser } from '../context/UserContext.js';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const User = () => {
     const {user, setUser} = useUser();
+    const [posts, setPosts] = useState([]);
     const displayName = user && user.user_name ? user.user_name : '';
     const navigate = useNavigate();
 
