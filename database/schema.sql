@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `image` (
 CREATE TABLE IF NOT EXISTS  `post` (
   `title` varchar(225) NOT NULL,
   `post_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `user_id` int NOT NULL ,
   `content` varchar(200) DEFAULT NULL,
   `share_tag` int DEFAULT NULL,
   `like_tag` int DEFAULT NULL,
