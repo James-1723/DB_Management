@@ -41,19 +41,17 @@ const Home = () => {
         <div>
             {results && results.map(post => (
                 <div key={post.id} className="post" onClick={() => handlePostClick(post.id)}>
-                    <div className="post_inside">
-                        <div className='poster-info'>
-                            <div className='poster-pic' style={{ backgroundColor: 'orange', color: 'white' }}>
-                                {post.title ? post.title.charAt(0).toUpperCase() : ''}
-                            </div>
-                            <p className="poster-name">{post.title}</p>
+                    <div className='poster-info'>
+                        <div className='poster-pic' style={{ backgroundColor: 'orange', color: 'white' }}>
+                            {post.title ? post.title.charAt(0).toUpperCase() : ''}
                         </div>
-                        <h3 className='post-title'>{post.title}</h3>
-                        {post.tags.map((tag, index) => (
-                            <span className='tag' key={index}>{tag}</span>
-                        ))}
-                        <p className="post-content">{post.content}</p>
+                        <p className="poster-name">{post.title}</p>
                     </div>
+                    <h3 className='post-title'>{post.title}</h3>
+                    {post.tags.map((tag, index) => (
+                        <span className='tag' key={index}> #{tag} </span>
+                    ))}
+                    <p className="post-content">{post.content}</p>
                 </div>
             ))}
         </div>
