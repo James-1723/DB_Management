@@ -7,7 +7,6 @@ import '../style/Post.css';
 const User = () => {
     const {user, setUser} = useUser();
     const [posts, setPosts] = useState([]);
-
     const displayName = user && user.user_name ? user.user_name : '';
     const navigate = useNavigate();
 
