@@ -19,8 +19,9 @@ export const SearchProvider = ({ children }) => {
                         tags: post.post_tags,
                         id: post.post_id
                     }));
-                    setResults(searchPosts); // 更新搜尋結果
-                    console.log(results)
+
+
+                    setResults(data.results); // 更新搜尋結果
                 } else {
                     console.error('Search failed:', data.message);
                 }
@@ -61,8 +62,7 @@ export const SearchProvider = ({ children }) => {
                     title: post.post_title,
                     content: post.post_content,
                     tags: post.post_tags,
-                    id: post.post_id,
-                    name: post.user_name
+                    id: post.post_id
                 }));
                 setResults(newPosts);
                 console.log(results);  
