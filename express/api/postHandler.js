@@ -123,7 +123,7 @@ router.post('/searchByTags', async (req, res) => {
             }));
             res.status(200).json({ success: true, posts });
         } else {
-            res.status(404).json({ success: false, message: 'No posts found with the provided tags', posts: []});
+            res.status(200).json({ success: false, message: 'No posts found with the provided tags', posts: []});
         }
     } catch (err) {
         console.error('Error fetching posts by tags: ', err);
