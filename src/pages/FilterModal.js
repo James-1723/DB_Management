@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSearch } from '../context/SearchContext.js';
 import '../style/FilterModal.css';
 
 const FilterModal = ({ isOpen, onClose }) => {
     const [tags, setTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
+    const { handleTagSearch } = useSearch(); // 使用 useSearch
 
     useEffect(() => {
         const fetchTags = async () => {
@@ -27,6 +29,7 @@ const FilterModal = ({ isOpen, onClose }) => {
 
     const handleApplyFilters = () => {
         console.log('Selected tags:', selectedTags);
+        handleTagSearch(selectedTags);
         onClose();
     };
 
